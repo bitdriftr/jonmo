@@ -120,10 +120,10 @@ fn ui_root(colors: impl SignalVec<Item = Color>) -> jonmo::Builder {
         // other one-time logic.
         .on_spawn(|world, entity| {
             // `observe` is a Bevy event-handling pattern. Here, we're setting up this
-            // button entity to listen for a `Click` event.
+            // button entity to listen for a `PointerClick` event.
             world.entity_mut(entity).observe(
                 // This closure is the event handler that runs when the button is clicked.
-                move |_: On<Pointer<Click>>,
+                move |_: On<PointerClick>,
                       colors: Res<Colors>,
                       mut mutable_vec_datas: Query<&mut MutableVecData<_>>| {
                     // Try to get the `Index` component from the clicked entity.
@@ -257,10 +257,10 @@ fn item(index: impl Signal<Item = Option<usize>> + Clone, color: Color) -> jonmo
         // other one-time logic.
         .on_spawn(|world, entity| {
             // `observe` is a Bevy event-handling pattern. Here, we're setting up this
-            // button entity to listen for a `Click` event.
+            // button entity to listen for a `PointerClick` event.
             world.entity_mut(entity).observe(
                 // This closure is the event handler that runs when the button is clicked.
-                move |_: On<Pointer<Click>>,
+                move |_: On<PointerClick>,
                       indices: Query<&Index>,
                       colors: Res<Colors>,
                       mut mutable_vec_datas: Query<&mut MutableVecData<_>>| {

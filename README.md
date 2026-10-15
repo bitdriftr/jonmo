@@ -97,7 +97,7 @@ fn counter_button(counter_holder: LazyEntity, color: Color, label: &'static str,
         },
         BackgroundColor(color),
     ))
-    .observe(move |_: On<Pointer<Click>>, mut counters: Query<&mut Counter>| {
+    .observe(move |_: On<PointerClick>, mut counters: Query<&mut Counter>| {
         **counters.get_mut(*counter_holder).unwrap() += step;
     })
     .child(jonmo::Builder::from((Text::from(label), TextFont::from_font_size(25.))))
